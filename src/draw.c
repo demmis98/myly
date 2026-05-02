@@ -657,18 +657,18 @@ static void doom(struct term_buf* term_buf)
 	static struct tb_cell fire[DOOM_STEPS] =
 	{
 		{' ', 9, 0}, // default
-		{0x2591, 2, 0}, // red
-		{0x2592, 2, 0}, // red
-		{0x2593, 2, 0}, // red
-		{0x2588, 2, 0}, // red
-		{0x2591, 4, 2}, // yellow
-		{0x2592, 4, 2}, // yellow
-		{0x2593, 4, 2}, // yellow
-		{0x2588, 4, 2}, // yellow
-		{0x2591, 8, 4}, // white
-		{0x2592, 8, 4}, // white
-		{0x2593, 8, 4}, // white
-		{0x2588, 8, 4}, // white
+		{0x2591, 5, 0}, // blue, black
+		{0x2591, 5, 0}, // blue, black
+		{0x2592, 5, 0}, // blue, black
+		{0x2588, 5, 0}, // blue, black
+		{0x2591, 7, 6}, // cyan, magenta
+		{0x2591, 7, 6}, // cyan, magenta
+		{0x2592, 7, 6}, // cyan, magenta
+		{0x2588, 7, 6}, // cyan, magenta
+		{0x2591, 8, 7}, // white, cyan
+		{0x2591, 8, 7}, // white, cyan
+		{0x2592, 8, 7}, // white, cyan
+		{0x2588, 8, 7}, // white, cyan
 	};
 
 	uint16_t src;
@@ -815,7 +815,7 @@ static void matrix(struct term_buf* buf)
         for (int i = 1; i <= buf->height; ++i)
         {
             uint32_t c;
-            int fg = TB_GREEN;
+            int fg = TB_MAGENTA;
             int bg = TB_DEFAULT;
 
             if (s->grid[i][j].val == -1 || s->grid[i][j].val == ' ')
@@ -831,7 +831,7 @@ static void matrix(struct term_buf* buf)
             {
                 if (s->grid[i][j].is_head)
                 {
-                    fg = TB_WHITE | TB_BOLD;
+                    fg = TB_MAGENTA | TB_BOLD;
                 }
                 tb_change_cell(j, i - 1, c, fg, bg);
             }
